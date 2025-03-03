@@ -15,6 +15,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  font-family: 'Inter', sans-serif;
 }
 
 #__next {
@@ -28,13 +29,27 @@ a {
   text-decoration: none;
 }
 
-:root {
-  --color-primary: #3182ce;
-  --color-secondary: #718096;
-  --color-accent: #ed8936;
-  --color-success: #38a169;
-  --color-warning: #ecc94b;
-  --color-error: #e53e3e;
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.mb-2 {
+  margin-bottom: 8px;
+}
+
+.mb-4 {
+  margin-bottom: 16px;
+}
+
+.mt-2 {
+  margin-top: 8px;
+}
+
+.mt-4 {
+  margin-top: 16px;
 }
 
 @keyframes fadeIn {
