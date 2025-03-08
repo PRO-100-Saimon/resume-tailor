@@ -1,23 +1,27 @@
 'use client';
 
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
-import { Box, Container } from '@mui/material';
+import { Box } from '@mui/material';
 
+import { ThemeWrapper } from '@/shared/ui/ThemeWrapper';
+import { Footer } from '@/widgets/Footer/Footer';
 import { Header } from '@/widgets/Header/Header';
 
 interface MainLayoutProps {
   children: ReactNode;
 }
 
-export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
+export const MainLayout = ({ children }: MainLayoutProps) => {
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      <Header />
-      <Container component="main" sx={{ flexGrow: 1, py: 4 }}>
-        {children}
-      </Container>
-      {/* Здесь будет Footer компонент */}
-    </Box>
+    <ThemeWrapper>
+      <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+        <Header />
+        <Box component="main" sx={{ flexGrow: 1 }}>
+          {children}
+        </Box>
+        <Footer />
+      </Box>
+    </ThemeWrapper>
   );
 };

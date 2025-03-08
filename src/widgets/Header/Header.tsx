@@ -5,10 +5,10 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 import Link from 'next/link';
 
-import { useTheme } from '@/app/providers/ThemeProvider/ThemeProvider';
+import { useAppTheme } from '@/shared/hooks/useAppTheme';
 
 export const Header = () => {
-  const { mode, toggleTheme } = useTheme();
+  const { mode, toggleTheme } = useAppTheme();
 
   return (
     <AppBar position="static">
