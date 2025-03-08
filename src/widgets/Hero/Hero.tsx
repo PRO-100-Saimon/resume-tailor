@@ -1,6 +1,7 @@
 'use client';
 
 import { Box, Typography, Button, Container, Stack } from '@mui/material';
+import Link from 'next/link';
 
 export const Hero = () => {
   return (
@@ -48,9 +49,11 @@ export const Hero = () => {
                 justifyContent: { xs: 'center', md: 'flex-start' },
               }}
             >
-              <Button variant="contained" size="large" sx={{ px: 4, py: 1.5, borderRadius: 2 }}>
-                Начать бесплатно
-              </Button>
+              <Link href="/auth" passHref style={{ textDecoration: 'none' }}>
+                <Button variant="contained" size="large" sx={{ px: 4, py: 1.5, borderRadius: 2 }}>
+                  Начать бесплатно
+                </Button>
+              </Link>
               <Button variant="outlined" size="large" sx={{ px: 4, py: 1.5, borderRadius: 2 }}>
                 Узнать больше
               </Button>
