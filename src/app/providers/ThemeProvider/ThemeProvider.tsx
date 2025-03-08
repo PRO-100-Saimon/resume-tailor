@@ -1,11 +1,8 @@
 'use client';
 
-import { FC, ReactNode, createContext, useContext, useMemo, useState } from 'react';
+import { FC, ReactNode, createContext, useContext, useState } from 'react';
 
-import CssBaseline from '@mui/material/CssBaseline';
-import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
-
-import { lightTheme, darkTheme } from '@/shared/config/theme';
+import MUIProvider from '@/app/providers/MUIProvider';
 
 type ThemeMode = 'light' | 'dark';
 
@@ -35,18 +32,9 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
     setMode(prevMode => (prevMode === 'light' ? 'dark' : 'light'));
   };
 
-  const theme = useMemo(() => {
-    return mode === 'light' ? lightTheme : darkTheme;
-  }, [mode]);
-
-  const value = useMemo(() => ({ mode, toggleTheme }), [mode]);
-
   return (
-    <ThemeContext.Provider value={value}>
-      <MuiThemeProvider theme={theme}>
-        <CssBaseline />
-        {children}
-      </MuiThemeProvider>
+    <ThemeContext.Provider value={{ mode, toggleTheme }}>
+      <MUIProvider mode={mode}>{children}</MUIProvider>
     </ThemeContext.Provider>
   );
 };

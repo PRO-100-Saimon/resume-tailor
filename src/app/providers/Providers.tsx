@@ -1,17 +1,20 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 
-import QueryProvider from '@/app/providers/QueryProvider/QueryProvider';
-import { ThemeProvider } from '@/app/providers/ThemeProvider/ThemeProvider';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ThemeProvider as NextThemesProvider } from 'next-themes';
+
 import { MainLayout } from '@/widgets/Layout/MainLayout';
 
 export function Providers({ children }: { children: ReactNode }) {
+  const [queryClient] = useState(() => new QueryClient());
+
   return (
-    <QueryProvider>
-      <ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <NextThemesProvider attribute="class" defaultTheme="light" enableSystem>
         <MainLayout>{children}</MainLayout>
-      </ThemeProvider>
-    </QueryProvider>
+      </NextThemesProvider>
+    </QueryClientProvider>
   );
 }
